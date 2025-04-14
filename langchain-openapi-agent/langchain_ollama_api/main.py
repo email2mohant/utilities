@@ -22,7 +22,7 @@ def parse_args():
     )
     parser.add_argument(
         "--model", 
-        default="llama3.2",
+        default="llama3.1",
         help="Ollama model to use (default: llama3.2)"
     )
     parser.add_argument(

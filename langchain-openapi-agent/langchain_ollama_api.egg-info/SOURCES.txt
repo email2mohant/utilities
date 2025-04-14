@@ -1,4 +1,10 @@
 setup.py
+langchain_ollama_api/__init__.py
+langchain_ollama_api/agent.py
+langchain_ollama_api/api.py
+langchain_ollama_api/config.py
+langchain_ollama_api/main.py
+langchain_ollama_api/utils.py
 langchain_ollama_api.egg-info/PKG-INFO
 langchain_ollama_api.egg-info/SOURCES.txt
 langchain_ollama_api.egg-info/dependency_links.txt

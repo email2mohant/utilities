@@ -19,8 +19,8 @@ logger = logging.getLogger(__name__)
 # Define request/response models
 class QueryRequest(BaseModel):
     query: str
-    model_params: Optional[Dict[str, Any]] = None
-    model: Optional[str] = None
+    model_params: Optional[Dict[str, Any]] = { "temperature": 0.7}
+    model: Optional[str] = "llama3.1"
 
 class QueryResponse(BaseModel):
     result: str

@@ -26,7 +26,10 @@ def load_openapi_spec(file_path: str) -> Dict[str, Any]:
     
     with open(file_path, 'r') as file:
         if file_extension in ('.yaml', '.yml'):
-            return yaml.safe_load(file)
+            content = yaml.load(file, Loader=yaml.Loader);
+            
+            print(content)
+            return content
         elif file_extension == '.json':
             return json.load(file)
         else:

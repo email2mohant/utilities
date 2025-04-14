@@ -2,14 +2,15 @@
 
 from typing import Dict, Any, Optional
 import logging
+from langchain_anthropic import ChatAnthropic
 
-from langchain.agents.agent_toolkits import OpenAPIToolkit
-from langchain.tools.openapi.utils import openapi_spec_to_openapi_agent
-from langchain.llms import Ollama
-from langchain.requests import RequestsWrapper
+from langchain_community.agent_toolkits.openapi import planner
+from langchain_community.llms import Ollama
+from langchain_community.utilities.requests import RequestsWrapper
 
 from .utils import load_openapi_spec
 from .config import DEFAULT_MODEL_PARAMS, DEFAULT_OLLAMA_BASE_URL
+from langchain_community.agent_toolkits.openapi.spec import reduce_openapi_spec
 
 logger = logging.getLogger(__name__)
 
@@ -36,13 +37,15 @@ def create_agent(spec: Dict[str, Any], model: str, model_params: Optional[Dict[s
     
     # Initialize the toolkit with the spec
     requests_wrapper = RequestsWrapper()
-    toolkit = OpenAPIToolkit.from_openapi_spec(
-        spec,
-        requests_wrapper=requests_wrapper
-    )
+    
     
     # Create and return the agent
-    return openapi_spec_to_openapi_agent(llm, toolkit)
+    return planner.create_openapi_agent(
+    reduce_openapi_spec(spec),
+    requests_wrapper,
+    llm,
+    allow_dangerous_requests=True)
+   
 
 class AgentManager:
     """
@@ -111,7 +114,7 @@ class AgentManager:
             logger.info(f"Successfully initialized agent with model {self.model}")
             return True
         except Exception as e:
-            logger.error(f"Failed to initialize agent: {str(e)}")
+            logger.error(f"Failed to initialize agent: {str(e)}",exc_info=True)
             return False
     
     def run_query(self, query: str, model_params: Optional[Dict[str, Any]] = None, 
