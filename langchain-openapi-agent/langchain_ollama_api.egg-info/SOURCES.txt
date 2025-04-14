@@ -1,0 +1,7 @@
+setup.py
+langchain_ollama_api.egg-info/PKG-INFO
+langchain_ollama_api.egg-info/SOURCES.txt
+langchain_ollama_api.egg-info/dependency_links.txt
+langchain_ollama_api.egg-info/entry_points.txt
+langchain_ollama_api.egg-info/requires.txt
+langchain_ollama_api.egg-info/top_level.txt

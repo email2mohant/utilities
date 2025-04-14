@@ -1,0 +1,23 @@
+Metadata-Version: 2.4
+Name: langchain-ollama-api
+Version: 0.1.0
+Summary: A FastAPI service for interacting with OpenAPI specs using LangChain and Ollama
+Author: Mohan Krishna
+Author-email: email2mohant@gmail.com
+Keywords: langchain,ollama,openapi,fastapi
+Requires-Python: >=3.8
+Requires-Dist: fastapi>=0.68.0
+Requires-Dist: uvicorn>=0.15.0
+Requires-Dist: pydantic>=1.8.2
+Requires-Dist: langchain>=0.0.267
+Requires-Dist: langchain-community>=0.0.16
+Requires-Dist: pyyaml>=6.0
+Requires-Dist: requests>=2.28.0
+Requires-Dist: jsonschema>=4.17.0
+Requires-Dist: typing-extensions>=4.0.0
+Dynamic: author
+Dynamic: author-email
+Dynamic: keywords
+Dynamic: requires-dist
+Dynamic: requires-python
+Dynamic: summary
